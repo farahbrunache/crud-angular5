@@ -24,6 +24,15 @@ export class TodoService {
       .pipe(catchError(this.handleError<ITodo>("addTodo")));
   }
 
+  updateTodo(todo: ITodo): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+    };
+    return this.http
+      .put(this.todosUrl, todo, httpOptions)
+      .pipe(catchError(this.handleError<any>("updateTodo")));
+  }
+
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
       console.log(`TODO APP ERROR::`);
