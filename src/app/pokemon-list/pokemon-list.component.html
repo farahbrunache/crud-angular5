@@ -1,5 +1,8 @@
 <ul>
   <li *ngFor="let each of pokemons">
-    {{each.name}}
+    <!-- <a href="#" (click)="showDetailsOf(each)">{{each.name}}</a> -->
+    <a routerLink="detail/{{each._id}}">{{each.name}}</a>
   </li>
 </ul>
+
+<!-- <pokemon-detail [pokemon]="selectedPokemon"></pokemon-detail> -->
