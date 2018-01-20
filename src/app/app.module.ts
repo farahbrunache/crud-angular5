@@ -12,9 +12,10 @@ import { PokemonListComponent } from "./pokemon-list/pokemon-list.component";
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { RoutingModule } from './/routing.module';
 import { GlobalsService } from './globals.service';
+import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
 
 @NgModule({
-  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent],
+  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, PokemonAddComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

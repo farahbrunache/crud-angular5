@@ -41,6 +41,12 @@ export class PokemonService {
       .pipe(catchError(this.handleError<any>("deletePokemon")));
   }
 
+  addPokemon(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http
+      .post(this.baseUrl, pokemon)
+      .pipe(catchError(this.handleError<Pokemon>("addPokemon")));
+  }
+
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

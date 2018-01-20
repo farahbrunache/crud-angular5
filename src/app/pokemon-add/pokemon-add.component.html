@@ -1,0 +1,15 @@
+<h2>add new pokemon</h2>
+<div>
+  <form #pokemonForm="ngForm" (ngSubmit)="addPokemon()">
+    <mat-form-field>
+      <input type="text" #name matInput placeholder="name" required [(ngModel)]="pokemon.name" name="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="evolves from" [(ngModel)]="pokemon.evolves_from" name="evolves_from">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="image url" [(ngModel)]="pokemon.image" name="image">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+  </form>
+</div>
