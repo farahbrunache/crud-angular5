@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { PokemonService } from "../pokemon.service";
 import { Pokemon } from "../pokemon";
 import { GlobalsService } from "../globals.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "pokemon-detail",
@@ -12,6 +13,7 @@ import { GlobalsService } from "../globals.service";
 export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon;
   constructor(
+    private location: Location,
     private route: ActivatedRoute,
     private pokemonSvc: PokemonService,
     private globals: GlobalsService
@@ -29,12 +31,17 @@ export class PokemonDetailComponent implements OnInit {
       this.globals.loading = false;
     });
   }
-  
+
   updatePokemon(): void {
     this.globals.loading = true;
     this.pokemonSvc.updatePokemon(this.pokemon).subscribe(() => {
       this.globals.loading = false;
+      this.goBack();
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   // resetData(): void {
