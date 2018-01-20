@@ -4,7 +4,9 @@ import {
   MatInputModule,
   MatButtonModule,
   MatCheckboxModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatGridListModule,
+  MatCardModule
 } from "@angular/material";
 
 @NgModule({
@@ -13,14 +15,18 @@ import {
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatGridListModule,
+    MatCardModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatGridListModule,
+    MatCardModule
   ]
 })
 export class CustomMaterialModule {}

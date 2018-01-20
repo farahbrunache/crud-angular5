@@ -8,5 +8,6 @@ import { GlobalsService } from "./globals.service";
 })
 export class AppComponent {
   title = "app";
+  resetLink: string = 'http://super-crud.herokuapp.com/reset';
   constructor(private globals: GlobalsService) {}
 }

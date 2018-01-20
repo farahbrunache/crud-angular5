@@ -13,7 +13,7 @@ import { GlobalsService } from "../globals.service";
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[];
   selectedPokemon: Pokemon;
-  resetLink: string = 'http://super-crud.herokuapp.com/reset';
+  
   constructor(
     // private cdr: ChangeDetectorRef,
     private pokemonService: PokemonService,

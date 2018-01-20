@@ -2,4 +2,11 @@
     <mat-progress-bar class="" [color]="'accent'" [mode]="'indeterminate'">
     </mat-progress-bar>
 </div>
+<nav class="navbar-header">
+    <a mat-button class="home" routerLink="/">
+        <span>Pokemons</span>
+    </a>
+    <a mat-button routerLink="pokemons/add">Add+</a>
+    <a mat-button [href]="resetLink" target="_blank">Reset</a>
+</nav>
 <router-outlet></router-outlet>
