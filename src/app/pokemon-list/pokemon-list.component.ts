@@ -38,6 +38,14 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
+  deletePokemon(pokemon: Pokemon): void {
+    this.globals.loading = true;
+    this.pokemonService.deletePokemon(pokemon["_id"]).subscribe(() => {
+      this.getPokemons();
+      // this.globals.loading = false;
+    });
+  }
+
   // showDetailsOf(pokemon: Pokemon): void {
   //   this.selectedPokemon = pokemon;
   // }

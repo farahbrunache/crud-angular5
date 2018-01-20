@@ -2,6 +2,7 @@
   <li *ngFor="let each of pokemons">
     <!-- <a href="#" (click)="showDetailsOf(each)">{{each.name}}</a> -->
     <a routerLink="detail/{{each._id}}">{{each.name}}</a>
+    <button mat-mini-fab color="warn" (click)="deletePokemon(each)">X</button>
   </li>
 </ul>
 

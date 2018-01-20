@@ -28,10 +28,17 @@ export class PokemonService {
   }
 
   updatePokemon(pokemon: Pokemon): Observable<any> {
-    const url = `${this.baseUrl}/${pokemon['_id']}`;
+    const url = `${this.baseUrl}/${pokemon["_id"]}`;
     return this.http
       .put(url, pokemon)
       .pipe(catchError(this.handleError<any>("updatePokemon")));
+  }
+
+  deletePokemon(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http
+      .delete(url)
+      .pipe(catchError(this.handleError<any>("deletePokemon")));
   }
 
   private handleError<T>(operation = "operation", result?: T) {
