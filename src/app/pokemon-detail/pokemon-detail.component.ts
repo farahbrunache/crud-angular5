@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PokemonService } from "../pokemon.service";
 import { Pokemon } from "../pokemon";
+import { GlobalsService } from "../globals.service";
 
 @Component({
   selector: "pokemon-detail",
@@ -12,7 +13,8 @@ export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon;
   constructor(
     private route: ActivatedRoute,
-    private pokemonSvc: PokemonService
+    private pokemonSvc: PokemonService,
+    private globals: GlobalsService
   ) {}
 
   ngOnInit() {
@@ -20,12 +22,19 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   getPokemonDetails(): void {
+    this.globals.loading = true;
     const id = this.route.snapshot.paramMap.get("id");
-    this.pokemonSvc.getPokemonById(id).subscribe(data => (this.pokemon = data));
+    this.pokemonSvc.getPokemonById(id).subscribe(data => {
+      this.pokemon = data;
+      this.globals.loading = false;
+    });
   }
-
+  
   updatePokemon(): void {
-    this.pokemonSvc.updatePokemon(this.pokemon).subscribe(() => {});
+    this.globals.loading = true;
+    this.pokemonSvc.updatePokemon(this.pokemon).subscribe(() => {
+      this.globals.loading = false;
+    });
   }
 
   // resetData(): void {
