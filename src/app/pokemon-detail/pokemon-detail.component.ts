@@ -23,4 +23,12 @@ export class PokemonDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id");
     this.pokemonSvc.getPokemonById(id).subscribe(data => (this.pokemon = data));
   }
+
+  updatePokemon(): void {
+    this.pokemonSvc.updatePokemon(this.pokemon).subscribe(() => {});
+  }
+
+  // resetData(): void {
+  //   this.pokemon = new Pokemon("manistorm");
+  // }
 }

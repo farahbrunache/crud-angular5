@@ -27,6 +27,13 @@ export class PokemonService {
       .pipe(catchError(this.handleError<Pokemon>(`getPokemonById = ${id}`)));
   }
 
+  updatePokemon(pokemon: Pokemon): Observable<any> {
+    const url = `${this.baseUrl}/${pokemon['_id']}`;
+    return this.http
+      .put(url, pokemon)
+      .pipe(catchError(this.handleError<any>("updatePokemon")));
+  }
+
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

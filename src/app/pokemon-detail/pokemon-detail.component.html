@@ -5,9 +5,19 @@
   <div>
     <span>id: </span>{{pokemon._id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="pokemon.name" placeholder="name" />
-    </label>
-  </div>
+
+  <form #pokemonForm="ngForm" (ngSubmit)="updatePokemon()">
+    <mat-form-field>
+      <input type="text" #name matInput placeholder="name" required [(ngModel)]="pokemon.name" name="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="evolves from" [(ngModel)]="pokemon.evolves_from" name="evolves_from">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="image url" [(ngModel)]="pokemon.image" name="image">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Update</button>
+    <!-- <button type="button" mat-raised-button color="primary" (click)="resetData(); pokemonForm.reset()">Reset</button> -->
+  </form>
 
 </div>
