@@ -10,6 +10,6 @@
     <mat-form-field>
       <input type="text" matInput placeholder="image url" [(ngModel)]="pokemon.image" name="image">
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Save</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="pokemonForm.invalid">Save</button>
   </form>
 </div>
