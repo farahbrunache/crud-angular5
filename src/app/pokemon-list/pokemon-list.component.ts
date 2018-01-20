@@ -1,7 +1,9 @@
+// import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 
 import { PokemonService } from "../pokemon.service";
 import { Pokemon } from "../pokemon";
+import { GlobalsService } from "../globals.service";
 
 @Component({
   selector: "pokemon-list",
@@ -11,16 +13,29 @@ import { Pokemon } from "../pokemon";
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[];
   selectedPokemon: Pokemon;
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    // private cdr: ChangeDetectorRef,
+    private pokemonService: PokemonService,
+    private globals: GlobalsService
+  ) {}
 
   ngOnInit() {
     this.getPokemons();
   }
 
+  // ngAfterViewInit() {
+  //   this.getPokemons();
+  // }
+
   getPokemons(): void {
-    this.pokemonService
-      .getPokemons()
-      .subscribe(data => (this.pokemons = data));
+    this.globals.loading = true;
+    setTimeout(() => {
+      this.pokemonService.getPokemons().subscribe(data => {
+        this.pokemons = data;
+        this.globals.loading = false;
+        // this.cdr.detectChanges();
+      });
+    });
   }
 
   // showDetailsOf(pokemon: Pokemon): void {

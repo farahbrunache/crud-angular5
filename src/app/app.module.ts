@@ -11,6 +11,7 @@ import { AppComponent } from "./app.component";
 import { PokemonListComponent } from "./pokemon-list/pokemon-list.component";
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { RoutingModule } from './/routing.module';
+import { GlobalsService } from './globals.service';
 
 @NgModule({
   declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent],
@@ -22,7 +23,7 @@ import { RoutingModule } from './/routing.module';
     CustomMaterialModule,
     RoutingModule
   ],
-  providers: [PokemonService],
+  providers: [PokemonService, GlobalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
