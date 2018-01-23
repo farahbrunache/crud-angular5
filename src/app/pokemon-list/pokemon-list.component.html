@@ -1,7 +1,7 @@
 <mat-grid-list cols="4" rowHeight="500">
   <mat-grid-tile *ngFor="let each of pokemons">
 
-    <mat-card [appHoverEffect]="hoverOpacity">
+    <mat-card [appHoverEffect]="hoverOpacity" defaultOpacVal="0.8">
       <mat-card-header>
         <img mat-card-avatar [src]="each.image">
         <mat-card-title>{{each.name | uppercase}}</mat-card-title>

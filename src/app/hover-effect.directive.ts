@@ -4,14 +4,14 @@ import { Directive, ElementRef, HostListener, Input } from "@angular/core";
   selector: "[appHoverEffect]"
 })
 export class HoverEffectDirective {
-  // @Input() opacVal: number;
   @Input('appHoverEffect') opacVal: number;
+  @Input() defaultOpacVal: number;
 
   constructor(private el: ElementRef) {}
 
   @HostListener("mouseenter")
   onmouseenter() {
-    this.setOpacity(this.opacVal || 0.1);
+    this.setOpacity(this.opacVal || this.defaultOpacVal || 0.1);
   }
 
   @HostListener("mouseleave")
