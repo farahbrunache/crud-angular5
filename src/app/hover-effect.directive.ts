@@ -1,14 +1,17 @@
-import { Directive, ElementRef, HostListener } from "@angular/core";
+import { Directive, ElementRef, HostListener, Input } from "@angular/core";
 
 @Directive({
   selector: "[appHoverEffect]"
 })
 export class HoverEffectDirective {
+  // @Input() opacVal: number;
+  @Input('appHoverEffect') opacVal: number;
+
   constructor(private el: ElementRef) {}
 
   @HostListener("mouseenter")
   onmouseenter() {
-    this.setOpacity(0.5);
+    this.setOpacity(this.opacVal || 0.1);
   }
 
   @HostListener("mouseleave")

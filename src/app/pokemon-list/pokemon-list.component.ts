@@ -11,6 +11,7 @@ import { GlobalsService } from "../globals.service";
   styleUrls: ["./pokemon-list.component.scss"]
 })
 export class PokemonListComponent implements OnInit {
+  hoverOpacity: number = 0.5;
   pokemons: Pokemon[];
   selectedPokemon: Pokemon;
   
