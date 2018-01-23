@@ -23,7 +23,7 @@ This is published to gh pages branch via an external plugin.
 angular-cli-ghpages
 https://github.com/angular-schule/angular-cli-ghpages
 
-ng build --prod
+ng build --prod --base-href="/crud-angular5/"
 angular-cli-ghpages
 
 ## Running unit tests
