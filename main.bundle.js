@@ -240,7 +240,7 @@ var HoverEffectDirective = /** @class */ (function () {
         this.el = el;
     }
     HoverEffectDirective.prototype.onmouseenter = function () {
-        this.setOpacity(0.5);
+        this.setOpacity(this.opacVal || this.defaultOpacVal || 0.1);
     };
     HoverEffectDirective.prototype.onmouseleave = function () {
         this.setOpacity(1);
@@ -248,6 +248,14 @@ var HoverEffectDirective = /** @class */ (function () {
     HoverEffectDirective.prototype.setOpacity = function (opacity) {
         this.el.nativeElement.style.opacity = opacity;
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('appHoverEffect'),
+        __metadata("design:type", Number)
+    ], HoverEffectDirective.prototype, "opacVal", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+        __metadata("design:type", Number)
+    ], HoverEffectDirective.prototype, "defaultOpacVal", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])("mouseenter"),
         __metadata("design:type", Function),
@@ -460,7 +468,7 @@ var PokemonDetailComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/pokemon-list/pokemon-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-grid-list cols=\"4\" rowHeight=\"500\">\n  <mat-grid-tile *ngFor=\"let each of pokemons\">\n\n    <mat-card appHoverEffect>\n      <mat-card-header>\n        <img mat-card-avatar [src]=\"each.image\">\n        <mat-card-title>{{each.name | uppercase}}</mat-card-title>\n        <mat-card-subtitle>{{each.pokedex}}</mat-card-subtitle>\n      </mat-card-header>\n      <img mat-card-image [src]=\"each.image\" [alt]=\"each.name\">\n      <mat-card-content>\n      </mat-card-content>\n      <mat-card-actions>\n        <a mat-button routerLink=\"detail/{{each._id}}\">Details</a>\n        <button mat-mini-fab color=\"warn\" (click)=\"deletePokemon(each)\" title=\"delete\">X</button>\n      </mat-card-actions>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>"
+module.exports = "<mat-grid-list cols=\"4\" rowHeight=\"500\">\n  <mat-grid-tile *ngFor=\"let each of pokemons\">\n\n    <mat-card [appHoverEffect]=\"hoverOpacity\" defaultOpacVal=\"0.8\">\n      <mat-card-header>\n        <img mat-card-avatar [src]=\"each.image\">\n        <mat-card-title>{{each.name | uppercase}}</mat-card-title>\n        <mat-card-subtitle>{{each.pokedex}}</mat-card-subtitle>\n      </mat-card-header>\n      <img mat-card-image [src]=\"each.image\" [alt]=\"each.name\">\n      <mat-card-content>\n      </mat-card-content>\n      <mat-card-actions>\n        <a mat-button routerLink=\"detail/{{each._id}}\">Details</a>\n        <button mat-mini-fab color=\"warn\" (click)=\"deletePokemon(each)\" title=\"delete\">X</button>\n      </mat-card-actions>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>"
 
 /***/ }),
 
@@ -509,6 +517,7 @@ var PokemonListComponent = /** @class */ (function () {
         pokemonService, globals) {
         this.pokemonService = pokemonService;
         this.globals = globals;
+        this.hoverOpacity = 0.5;
     }
     PokemonListComponent.prototype.ngOnInit = function () {
         this.getPokemons();
