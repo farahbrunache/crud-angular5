@@ -14,9 +14,10 @@ import { RoutingModule } from './/routing.module';
 import { GlobalsService } from './globals.service';
 import { PokemonAddComponent } from './pokemon-add/pokemon-add.component';
 import { HoverEffectDirective } from './hover-effect.directive';
+import { AnimateNumberDirective } from './animate-number.directive';
 
 @NgModule({
-  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, PokemonAddComponent, HoverEffectDirective],
+  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, PokemonAddComponent, HoverEffectDirective, AnimateNumberDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
