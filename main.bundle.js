@@ -17,6 +17,50 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
+/***/ "../../../../../src/app/animate-number.directive.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnimateNumberDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+// import * as animateNumber from "jquery.animateNumber";
+var AnimateNumberDirective = /** @class */ (function () {
+    function AnimateNumberDirective(el) {
+        this.el = el;
+    }
+    AnimateNumberDirective.prototype.ngAfterViewInit = function () {
+        $(this.el.nativeElement).animateNumber({
+            number: this.count
+        });
+        // $(this.el.nativeElement).css("color", "yellow");
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("appAnimateNumber"),
+        __metadata("design:type", Number)
+    ], AnimateNumberDirective.prototype, "count", void 0);
+    AnimateNumberDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Directive */])({
+            selector: "[appAnimateNumber]"
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]])
+    ], AnimateNumberDirective);
+    return AnimateNumberDirective;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -100,6 +144,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__globals_service__ = __webpack_require__("../../../../../src/app/globals.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pokemon_add_pokemon_add_component__ = __webpack_require__("../../../../../src/app/pokemon-add/pokemon-add.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__hover_effect_directive__ = __webpack_require__("../../../../../src/app/hover-effect.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__animate_number_directive__ = __webpack_require__("../../../../../src/app/animate-number.directive.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -120,12 +165,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pokemon_list_pokemon_list_component__["a" /* PokemonListComponent */], __WEBPACK_IMPORTED_MODULE_9__pokemon_detail_pokemon_detail_component__["a" /* PokemonDetailComponent */], __WEBPACK_IMPORTED_MODULE_12__pokemon_add_pokemon_add_component__["a" /* PokemonAddComponent */], __WEBPACK_IMPORTED_MODULE_13__hover_effect_directive__["a" /* HoverEffectDirective */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pokemon_list_pokemon_list_component__["a" /* PokemonListComponent */], __WEBPACK_IMPORTED_MODULE_9__pokemon_detail_pokemon_detail_component__["a" /* PokemonDetailComponent */], __WEBPACK_IMPORTED_MODULE_12__pokemon_add_pokemon_add_component__["a" /* PokemonAddComponent */], __WEBPACK_IMPORTED_MODULE_13__hover_effect_directive__["a" /* HoverEffectDirective */], __WEBPACK_IMPORTED_MODULE_14__animate_number_directive__["a" /* AnimateNumberDirective */]],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
@@ -468,7 +514,7 @@ var PokemonDetailComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/pokemon-list/pokemon-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-grid-list cols=\"4\" rowHeight=\"500\">\n  <mat-grid-tile *ngFor=\"let each of pokemons\">\n\n    <mat-card [appHoverEffect]=\"hoverOpacity\" defaultOpacVal=\"0.8\">\n      <mat-card-header>\n        <img mat-card-avatar [src]=\"each.image\">\n        <mat-card-title>{{each.name | uppercase}}</mat-card-title>\n        <mat-card-subtitle>{{each.pokedex}}</mat-card-subtitle>\n      </mat-card-header>\n      <img mat-card-image [src]=\"each.image\" [alt]=\"each.name\">\n      <mat-card-content>\n      </mat-card-content>\n      <mat-card-actions>\n        <a mat-button routerLink=\"detail/{{each._id}}\">Details</a>\n        <button mat-mini-fab color=\"warn\" (click)=\"deletePokemon(each)\" title=\"delete\">X</button>\n      </mat-card-actions>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>"
+module.exports = "<mat-card class=\"count-container\">\n  <div *ngIf=\"globals.loading\">searching for pokemons...</div>\n  <div class=\"success-msg\" *ngIf=\"!globals.loading\">\n    <span>found </span>\n    <span class=\"count\" [appAnimateNumber]=\"pokemons.length\"></span>\n    <span> pokemons!!!</span>\n  </div>\n</mat-card>\n<mat-grid-list cols=\"4\" rowHeight=\"500\">\n  <mat-grid-tile *ngFor=\"let each of pokemons\">\n\n    <mat-card [appHoverEffect]=\"hoverOpacity\" defaultOpacVal=\"0.8\">\n      <mat-card-header>\n        <img mat-card-avatar [src]=\"each.image\">\n        <mat-card-title>{{each.name | uppercase}}</mat-card-title>\n        <mat-card-subtitle>{{each.pokedex}}</mat-card-subtitle>\n      </mat-card-header>\n      <img mat-card-image [src]=\"each.image\" [alt]=\"each.name\">\n      <mat-card-content>\n      </mat-card-content>\n      <mat-card-actions>\n        <a mat-button routerLink=\"detail/{{each._id}}\">Details</a>\n        <button mat-mini-fab color=\"warn\" (click)=\"deletePokemon(each)\" title=\"delete\">X</button>\n      </mat-card-actions>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>"
 
 /***/ }),
 
@@ -480,7 +526,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".mat-card-image {\n  height: 250px;\n  width: 320px; }\n", ""]);
+exports.push([module.i, ".mat-card-image {\n  height: 250px;\n  width: 320px; }\n\n.count-container {\n  text-align: center; }\n\n.count-container .success-msg {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n\n.count-container .success-msg .count {\n      font-size: 2em;\n      padding: 0 5px; }\n", ""]);
 
 // exports
 
