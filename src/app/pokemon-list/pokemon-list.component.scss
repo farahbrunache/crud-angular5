@@ -4,7 +4,13 @@
 }
 .count-container {
   text-align: center;
-  .count {
-    font-size: 2em;
+  .success-msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .count {
+      font-size: 2em;
+      padding: 0 5px;
+    }
   }
 }

@@ -1,6 +1,6 @@
 <mat-card class="count-container">
   <div *ngIf="globals.loading">searching for pokemons...</div>
-  <div *ngIf="!globals.loading">
+  <div class="success-msg" *ngIf="!globals.loading">
     <span>found </span>
     <span class="count" [appAnimateNumber]="pokemons.length"></span>
     <span> pokemons!!!</span>
