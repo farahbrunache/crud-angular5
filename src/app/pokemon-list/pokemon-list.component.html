@@ -1,4 +1,11 @@
-<div appAnimateNumber></div>
+<mat-card class="count-container">
+  <div *ngIf="globals.loading">searching for pokemons...</div>
+  <div *ngIf="!globals.loading">
+    <span>found </span>
+    <span class="count" [appAnimateNumber]="pokemons.length"></span>
+    <span> pokemons!!!</span>
+  </div>
+</mat-card>
 <mat-grid-list cols="4" rowHeight="500">
   <mat-grid-tile *ngFor="let each of pokemons">
 
